@@ -12,3 +12,13 @@ Personal collection of AI skills for workflow automation.
 ## Usage
 
 Invoke a skill by typing `/<skill-name>` (e.g., `/rfp`).
+
+## Installing skills to Claude Code
+
+Skills in this repo need to be symlinked to `~/.claude/skills/` to be globally available. Run:
+
+```bash
+./sync-skills.sh
+```
+
+This scans all subdirectories containing a `SKILL.md`, and creates symlinks in `~/.claude/skills/`. Already-linked skills are skipped. Run this once after adding a new skill.
