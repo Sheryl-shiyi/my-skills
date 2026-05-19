@@ -7,7 +7,8 @@ Personal collection of AI skills for workflow automation.
 | Skill | Description |
 |-------|-------------|
 | [rfp](rfp/) | Structured workflow for answering RFP questions using documentation repos and web research. Covers scope confirmation, parallel research, drafting, review, URL validation, and customer-facing output generation. |
+| [install-rhoai-34](install-rhoai-34/) | Install Red Hat OpenShift AI (RHOAI) 3.4 on a fresh OpenShift 4.20+ cluster using the ai-accelerator GitOps repo. Use this skill when the user asks to install, deploy, or set up RHOAI 3.4 on an OpenShift cluster. Trigger on: 'install RHOAI', 'deploy RHOAI 3.4', 'set up OpenShift AI', '安装RHOAI', '部署RHOAI 3.4', '搭建AI平台'.|
 
 ## Usage
 
-In Claude Code, invoke a skill by typing `/<skill-name>` (e.g., `/rfp`).
+Invoke a skill by typing `/<skill-name>` (e.g., `/rfp`).
