@@ -1,0 +1,28 @@
+# MaaS Gateway TLS Certificate
+# Template — replace ${INGRESS_DOMAIN} and ${ISSUER_NAME} before applying.
+#
+# To get these values:
+#   INGRESS_DOMAIN=$(oc get ingresses.config.openshift.io cluster -o jsonpath='{.spec.domain}')
+#   ISSUER_NAME=$(oc get certificate -n openshift-ingress -o jsonpath='{.items[0].spec.issuerRef.name}')
+#
+# If no Certificate exists in openshift-ingress, list available issuers:
+#   oc get clusterissuers
+
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: maas-default-gateway-tls
+  namespace: openshift-ingress
+spec:
+  secretName: maas-default-gateway-tls
+  duration: 2160h
+  renewBefore: 360h
+  dnsNames:
+    - "*.${INGRESS_DOMAIN}"
+  issuerRef:
+    group: cert-manager.io
+    kind: ClusterIssuer
+    name: "${ISSUER_NAME}"
+  usages:
+    - server auth
+    - client auth

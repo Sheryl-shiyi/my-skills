@@ -1,0 +1,28 @@
+# Model Registry CR + DB password secret
+# Prerequisites:
+#   1. maas-postgres must be running in redhat-ods-applications
+#   2. "model-registry" database must be created in maas-postgres
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: model-registry-db-credentials
+  namespace: rhoai-model-registries
+type: Opaque
+stringData:
+  password: maas_PASS
+---
+apiVersion: modelregistry.opendatahub.io/v1alpha1
+kind: ModelRegistry
+metadata:
+  name: model-registry
+  namespace: rhoai-model-registries
+spec:
+  postgres:
+    host: maas-postgres.redhat-ods-applications.svc.cluster.local
+    port: 5432
+    database: model-registry
+    username: maas
+    passwordSecret:
+      name: model-registry-db-credentials
+      key: password
